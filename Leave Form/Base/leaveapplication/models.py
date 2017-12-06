@@ -5,4 +5,5 @@ class Students(models.Model):
     lastname= models.CharField(max_length=100)
     email= models.EmailField()
     date= models.DateTimeField()
+    reason=models.CharField(max_length=100,blank=False)
 # Create your models here.
