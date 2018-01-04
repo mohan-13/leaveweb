@@ -9,11 +9,12 @@
 
 <body>
 
-	<form >
-        <table>
- 		{{ form1.as_p}}
-            </table>
- 		<input type="submit" ,name='create',value="SUBMIT" />
+	<form  method="post">
+
+ 		{% csrf_token %}
+        {{ form1.as_p}}
+
+ 		<input type="submit" name='create' value="SUBMIT" />
     	</form>
 
 </body>

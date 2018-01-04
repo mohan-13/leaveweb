@@ -5,7 +5,7 @@ from . import views
 urlpatterns=[
 
     url(r'^$',views.index),
-    url(r'^apply/', views.tester)
+    url(r'^apply/$', views.tester,name='tester')
 ]
 
 # Create your views here.
