@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Applied Leaves</title>
+    <style>
+table, th,td {
+    border: 1px solid black;
+    color: green;
+    align-items: center;
+}
+</style>
+    </head>
+    <h2 align="center" style="border:2px solid #36ff19;color:rgb(255,46,228);">APPLIED LEAVES</h2>
+
+<body>
+<center>
+<table style="width: 100%">
+
+    <tr>
+        <th>S.No</th>
+        <th>Leave Reason</th>
+        <th>Applied Date& Time</th>
+
+    </tr>
+    {% for datum in data %}
+    <tr >
+            <td >{{ datum.id}}</td>
+            <td >{{ datum.reason}}</td>
+            <td >{{ datum.date}}</td>
+
+    {% endfor %}
+    </tr>
+</table>
+</center>
+</body>
+</html>

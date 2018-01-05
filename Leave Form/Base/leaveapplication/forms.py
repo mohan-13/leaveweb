@@ -5,4 +5,4 @@ from leaveapplication.models import Students
 class StudentForm(forms.ModelForm):
     class Meta:
         model=Students
-        fields=['firstname','lastname','rollno','email','reason',]
+        fields=['rollno','firstname','lastname','email','reason',]

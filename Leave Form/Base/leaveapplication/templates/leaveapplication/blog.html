@@ -3,19 +3,21 @@
 	<title>LEAVE APPLICATION</title>
 	</head>
 
-<h2 style="border:2px solid Tomato;text-color:rgb(100,0,0);">LEAVE APPLICATION FORM
+<h2 align="center" style="border:2px solid #36ff19;color:rgb(255,46,228);">LEAVE APPLICATION FORM
 
 </h2>
 
-<body>
-
-	<form  method="post">
+<body style=" color:#ff6f24">
+<center>
+	<form  method="post" >
 
  		{% csrf_token %}
         {{ form1.as_p}}
 
- 		<input type="submit" name='create' value="SUBMIT" />
+ 		<input type="submit" name='create' value="SUBMIT" >
     	</form>
 
+
+        </center>
 </body>
 </html>

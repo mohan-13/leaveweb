@@ -1,7 +1,0 @@
-<html>
-<title>
-Home 
-</title>
-<h1>
-WELCOME
-</h1>
