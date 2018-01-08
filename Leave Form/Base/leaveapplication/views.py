@@ -1,11 +1,9 @@
-from django.shortcuts import render
-from django.http import HttpResponse
 from leaveapplication.forms import *
 from .models import Students
+from django.contrib.auth import login, authenticate
+from django.shortcuts import render, redirect
 
 def index(request):
-    #return HttpResponse(
-        #"<title>Home</title><h2> <p></p> <a href=""apply"" >Leave Apply </a>")
     return render(request,'leaveapplication/index.html')
 def tester(request):
     form1=StudentForm(request.POST)
@@ -15,5 +13,13 @@ def tester(request):
 def details(request):
     data=Students.objects.all()
     return render(request,'leaveapplication/details.html',{'data': data} )
+def signup(request):
+    form = SignUpForm(request.POST)
+    if form.is_valid():
+        form.save()
+    else:
+        form = SignUpForm()
+    return render(request, 'leaveapplication/signup.html', {'form': form})
+
 
 # Create your views here.
