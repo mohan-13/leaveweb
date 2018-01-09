@@ -3,6 +3,8 @@ from .models import Students
 from django.contrib.auth import login, authenticate
 from django.shortcuts import render, redirect
 
+def home(request):
+    return render(request,'leaveapplication/home.html')
 def index(request):
     return render(request,'leaveapplication/index.html')
 def tester(request):
