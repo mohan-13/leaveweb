@@ -17,8 +17,15 @@ def details(request):
     return render(request,'leaveapplication/details.html',{'data': data} )
 def signup(request):
     form = SignUpForm(request.POST)
+
     if form.is_valid():
-        form.save()
+        password = form.cleaned_data.get("password")
+        confirm_password = form.cleaned_data.get("confirm_password")
+        if password==confirm_password:
+            form.save()
+        else:
+            form.add_error('confirm_password', 'The passwords do not match')
+
     else:
         form = SignUpForm()
     return render(request, 'leaveapplication/signup.html', {'form': form})

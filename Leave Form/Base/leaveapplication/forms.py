@@ -9,6 +9,13 @@ class StudentForm(forms.ModelForm):
         model=Students
         fields=['reason',]
 class SignUpForm(forms.ModelForm):
+    password = forms.CharField(widget=forms.PasswordInput())
+    confirm_password = forms.CharField(widget=forms.PasswordInput())
     class Meta:
+
         model = user
-        fields = ('rollno', 'firstname', 'lastname', 'email', 'password')
+
+        fields = ('rollno', 'firstname', 'lastname', 'email', 'password','confirm_password',)
+
+
+
