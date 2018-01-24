@@ -7,13 +7,14 @@ def home(request):
     return render(request,'leaveapplication/home.html')
 def index(request):
     return render(request,'leaveapplication/index.html')
-def tester(request):
+def apply(request):
     form1=StudentForm(request.POST)
     if form1.is_valid():
-        form1.save()
+        user=form1.save()
     return render(request, 'leaveapplication/blog.html',{'form1': form1} )
 def details(request):
-    data=Students.objects.all()
+    name=request.user.email
+    data=Students.objects.filter(email=name)
     return render(request,'leaveapplication/details.html',{'data': data} )
 def signup(request):
     form = SignUpForm(request.POST)
