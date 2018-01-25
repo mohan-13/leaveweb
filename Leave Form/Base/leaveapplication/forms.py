@@ -5,14 +5,25 @@ from django.contrib.auth.models import User
 
 class StudentForm(forms.ModelForm):
 
+    def __init__(self, user,*args, **kwargs):
+        super(StudentForm, self).__init__(*args, **kwargs)
+        self.user = user
     class Meta:
         model=Students
-        fields=['reason',]
+        fields=['reason','date']
+    def save(self,commit=True):
+        data=self.cleaned_data
+
+        date=data['date']
+        reason=data['reason']
+
+        student = Students.objects.create(date=date,reason=reason,apply_user=self.user)
+        return student
 class SignUpForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput())
     confirm_password = forms.CharField(widget=forms.PasswordInput())
     first_name = forms.CharField(max_length=255)
-    email = forms.EmailField(max_length=255)
+    email = forms.EmailField(max_length=255,)
 
     class Meta:
         model = user

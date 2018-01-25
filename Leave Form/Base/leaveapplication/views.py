@@ -8,14 +8,22 @@ def home(request):
 def index(request):
     return render(request,'leaveapplication/index.html')
 def apply(request):
-    form1=StudentForm(request.POST)
-    if form1.is_valid():
-        user=form1.save()
-    return render(request, 'leaveapplication/blog.html',{'form1': form1} )
+    form = StudentForm(request.user)
+    if request.method =="POST":
+        form = StudentForm(request.user,request.POST)
+        if form.is_valid():
+            user = form.save()
+    return render(request, 'leaveapplication/blog.html',{'form1': form} )
+
 def details(request):
-    name=request.user.email
-    data=Students.objects.filter(email=name)
-    return render(request,'leaveapplication/details.html',{'data': data} )
+    name=request.user.id
+    if name==4:
+        data1=Students.objects.all()
+        return render(request, 'leaveapplication/admindetails.html', {'data1': data1})
+    else:
+
+        data=Students.objects.filter(apply_user_id=name)
+        return render(request,'leaveapplication/details.html',{'data':data} )
 def signup(request):
     form = SignUpForm(request.POST)
 

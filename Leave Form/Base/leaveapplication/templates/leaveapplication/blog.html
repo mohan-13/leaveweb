@@ -9,7 +9,7 @@
 
 <body style=" color:#ff6f24">
 <center>
-	<form  method="post" >
+	<form  method="post" action="{% url 'index' %}">
 
  		{% csrf_token %}
         {{ form1.as_p}}

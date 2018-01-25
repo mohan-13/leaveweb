@@ -20,13 +20,15 @@ table, th,td {
 
     <tr>
         <th>S.No</th>
+        <th>Applied By</th>
         <th>Leave Reason</th>
         <th>Applied Date& Time</th>
 
     </tr>
-    {% for datum in data %}
+    {% for datum in data1 %}
     <tr >
             <td >{{ datum.id}}</td>
+            <td>{{ datum.apply_user_id }}</td>
             <td >{{ datum.reason}}</td>
             <td >{{ datum.date}}</td>
 
