@@ -10,15 +10,20 @@ class StudentForm(forms.ModelForm):
         self.user = user
     class Meta:
         model=Students
-        fields=['reason','date']
+        fields=['reason','from_date','to_date']
     def save(self,commit=True):
         data=self.cleaned_data
 
-        date=data['date']
+        f_date=data['from_date']
+        t_date=data['to_date']
         reason=data['reason']
 
-        student = Students.objects.create(date=date,reason=reason,apply_user=self.user)
+        student = Students.objects.create(to_date=t_date,from_date=f_date,reason=reason,apply_user=self.user)
         return student
+class AdminForm(forms.ModelForm):
+    class Meta:
+        model=Students
+        fields=['status']
 class SignUpForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput())
     confirm_password = forms.CharField(widget=forms.PasswordInput())

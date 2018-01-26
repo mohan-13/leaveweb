@@ -21,14 +21,19 @@ table, th,td {
     <tr>
         <th>S.No</th>
         <th>Leave Reason</th>
-        <th>Applied Date& Time</th>
+        <th>From Date</th>
+        <th>To Date</th>
+        <th>Leave Status</th>
 
     </tr>
+
     {% for datum in data %}
     <tr >
-            <td >{{ datum.id}}</td>
+            <td >{{ forloop.counter}}</td>
             <td >{{ datum.reason}}</td>
-            <td >{{ datum.date}}</td>
+            <td >{{ datum.from_date}}</td>
+            <td>{{ datum.to_date }}</td>
+            <td>{{ datum.status}}</td>
 
     {% endfor %}
     </tr>
