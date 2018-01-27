@@ -22,19 +22,28 @@ table, th,td {
         <th>S.No</th>
         <th>Applied By</th>
         <th>Leave Reason</th>
-        <th>Applied Date& Time</th>
+        <th>From Date& Time</th>
+        <th>To Date</th>
         <th>Status</th>
     </tr>
     {% for datum in data1 %}
     <tr >
             <td >{{ forloop.counter}}</td>
-            <td>{{ datum.apply_user_id }}</td>
+            <td>{{ datum.apply_user.rollno }}</td>
             <td >{{ datum.reason}}</td>
             <td >{{ datum.from_date}}</td>
+            <td>{{ datum.to_date }}</td>
+            <td>
             <form method="POST" >{% csrf_token %}
-                      {{ form }}<td><input type="submit" name='create' value="SUBMIT" ></td>
+                        <select title="selcet_value" name="select_value" >
+                            <option value="0">Submitted</option>
+                            <option value="1">Approved</option>
+                            <option value="2">Denied</option>
+                                <input type="text" style="display: none" name='id'
+                                                               value="{{ datum.id }}"> <input type="submit" name='create'
+                                                                                             value="SUBMIT"> </form>
+                        </select>
 
-            </form>
             </td>
 
     {% endfor %}

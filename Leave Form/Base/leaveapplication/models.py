@@ -11,9 +11,9 @@ REASON_CHOICES=(
     ('studyleave','STUDY LEAVE')
 )
 STATUS_CHOICES=(
-    ('submitted','SUBMITTED'),
-    ('approved','APPROVED'),
-    ('denied','DENIED')
+    (1,'SUBMITTED'),
+    (2,'APPROVED'),
+    (3,'DENIED')
      )
 class user(models.Model):
     rollno = models.CharField(max_length=8, unique=True, primary_key=True)
@@ -22,7 +22,7 @@ class Students(models.Model):
     apply_user=models.ForeignKey(User,null=True,blank=True)
     from_date= models.DateTimeField(default=datetime.now())
     to_date=models.DateTimeField(blank=True,default=datetime.now())
-    status=models.CharField(max_length=20,choices=STATUS_CHOICES,default='submitted')
+    status=models.CharField(max_length=20,choices=STATUS_CHOICES,default=STATUS_CHOICES[0][1])
 
     reason=models.CharField(max_length=100,blank=False,choices=REASON_CHOICES)
 # Create your models here.
