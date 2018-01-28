@@ -4,17 +4,22 @@ Home
 </title>
 <h1 align="center" style="border:1px solid #36ff19;color:#ff2ee4">
 WELCOME {{ user }}
+    <a style="alignment:right" href="{% url 'logout' %}"> Logout></a>
 </h1>
 <body style="color:green">
 <center>
 
-
-<a style="color:rgba(255,2,226,0.73)" href={% url "apply" %} >LEAVE APPLY </a>
-    <p>
+{% if x %}
 
  <a style="color:indianred" href="{% url "details" %}"
-       <button>APPLIED LEAVES</button>
-</a>
+       <button>APPLIED LEAVES</button></a>
+    {% else %}
+    <a style="color:rgba(255,2,226,0.73)" href={% url "apply" %} >LEAVE APPLY </a>
+    <p>
+    <a style="color:indianred" href="{% url "details" %}"
+        <button>APPLIED LEAVES</button></a></p>
+    {% endif %}
+
 
     </center>
 </body>

@@ -23,6 +23,7 @@ class Students(models.Model):
     from_date= models.DateTimeField(default=datetime.now())
     to_date=models.DateTimeField(blank=True,default=datetime.now())
     status=models.CharField(max_length=20,choices=STATUS_CHOICES,default=STATUS_CHOICES[0][1])
-
+    applied_date=models.DateTimeField(default=datetime.now())
+    approved_date=models.CharField(default='Waiting',max_length=19)
     reason=models.CharField(max_length=100,blank=False,choices=REASON_CHOICES)
 # Create your models here.

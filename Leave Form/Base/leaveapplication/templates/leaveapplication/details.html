@@ -23,6 +23,8 @@ table, th,td {
         <th>Leave Reason</th>
         <th>From Date</th>
         <th>To Date</th>
+        <th>APPLIED ON</th>
+        <th>APPROVED ON</th>
         <th>Leave Status</th>
 
     </tr>
@@ -33,6 +35,8 @@ table, th,td {
             <td >{{ datum.reason}}</td>
             <td >{{ datum.from_date}}</td>
             <td>{{ datum.to_date }}</td>
+            <td>{{ datum.applied_date }}</td>
+            <td>{{ datum.approved_date }}</td>
             <td>{{ datum.status}}</td>
 
     {% endfor %}
@@ -41,5 +45,6 @@ table, th,td {
 
 </center>
 <p><a href="{% url "index" %}">BACK</a></p>
+<a href="{% url 'logout' %}"> Click Here to logout></a>
 </body>
 </html>

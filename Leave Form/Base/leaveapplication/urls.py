@@ -7,7 +7,8 @@ urlpatterns=[
 
     url(r'^$', views.home),
     url(r'^signup/$', views.signup, name='signup'),
-    url(r'^login/$', view.login, name='login'),
+    url(r'^login/$', views.login, name='login'),
+    url(r'^logout/$', view.logout,name='logout'),
     url(r'^index/$', views.index, name='index'),
     url(r'^apply/$', views.apply, name='apply'),
     url(r'^details/$', views.details, name='details')

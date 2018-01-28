@@ -24,15 +24,17 @@ table, th,td {
         <th>Leave Reason</th>
         <th>From Date& Time</th>
         <th>To Date</th>
+        <th>APPLIED ON</th>
         <th>Status</th>
     </tr>
     {% for datum in data1 %}
     <tr >
             <td >{{ forloop.counter}}</td>
-            <td>{{ datum.apply_user.rollno }}</td>
+            <td>{{ datum.apply_user.email}}</td>
             <td >{{ datum.reason}}</td>
             <td >{{ datum.from_date}}</td>
             <td>{{ datum.to_date }}</td>
+            <td>{{ datum.applied_date }}</td>
             <td>
             <form method="POST" >{% csrf_token %}
                         <select title="selcet_value" name="select_value" >
@@ -49,6 +51,7 @@ table, th,td {
     {% endfor %}
     </tr>
 </table>
+<p><a href="{% url "index" %}">BACK</a></p>
 </center>
 </body>
 </html>

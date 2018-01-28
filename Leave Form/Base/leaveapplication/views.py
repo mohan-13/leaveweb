@@ -1,19 +1,17 @@
 from leaveapplication.forms import *
 from .models import Students
-from django.contrib.auth import login, authenticate
-from django.shortcuts import render, HttpResponseRedirect , redirect
+from datetime import datetime
+from django.shortcuts import render,redirect
 from django.contrib import messages
+from django.contrib.auth import views as view
+
 
 def home(request):
     return render(request,'leaveapplication/home.html')
 def index(request):
-    name = request.user.id
     name1 = request.user.first_name
-    if name == 4:
-        return render(request, 'leaveapplication/adminindex.html', {'user':name1})
-    else:
-
-        return render(request, 'leaveapplication/index.html', {'user':name1})
+    x=(request.user.has_perm('leaveapplication.change_students'))
+    return render(request, 'leaveapplication/index.html', {'user':name1,'x':x})
 def apply(request):
     form = StudentForm(request.user)
     if request.method =="POST":
@@ -28,7 +26,7 @@ def apply(request):
 def details(request):
     name=request.user.id
     name1 = request.user.first_name
-    if name==4:
+    if request.user.has_perm('leaveapplication.change_students'):
         data1=Students.objects.filter(status="SUBMITTED")
         select_value=request.POST.get('select_value')
         id=request.POST.get('id')
@@ -38,9 +36,11 @@ def details(request):
                 pass
             elif int(select_value) == 1:
                 leave_obj.status = "APPROVED"
+                leave_obj.approved_date=datetime.now()
                 leave_obj.save()
             elif int(select_value) == 3:
                 leave_obj.status = "DENIED"
+                leave_obj.approved_date = datetime.now()
                 leave_obj.save()
         except Students.DoesNotExist:
             pass
@@ -66,6 +66,12 @@ def signup(request):
     else:
         form = SignUpForm()
     return render(request, 'leaveapplication/signup.html', {'form': form})
+def login(request):
+    if request.user.is_authenticated:
+        return redirect('index')
+
+    else:
+            return view.login(request)
 
 
 # Create your views here.
